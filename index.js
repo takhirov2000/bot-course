@@ -19,26 +19,15 @@ const start = async () => {
         {command: '/info', description: 'Получить информацию о пользователе'},
 
     ])
+    if (text === '/start') {
 
-    bot.on('message', async msg => {
-        const text = msg.text;
-        const chatId = msg.chat.id;
+        await bot.sendSticker(chatId, 'https://tlgrm.ru/_/stickers/bac/490/bac4908e-f752-300f-b722-3da6737b9b88/1.webp')
+        return bot.sendMessage(chatId, `Добро пожаловать в телеграм бот Тохировлар`);
+    }
+    if (text === '/info') {
+        await bot.sendMessage(chatId, '8 март бугун Латофатнинг байрами!');
+    }
+    return bot.sendMessage(chatId, 'Я тебя не понимаю, попробуй еще раз!)');
 
-        try {
-            if (text === '/start') {
-
-                await bot.sendSticker(chatId, 'https://tlgrm.ru/_/stickers/bac/490/bac4908e-f752-300f-b722-3da6737b9b88/1.webp')
-                return bot.sendMessage(chatId, `Добро пожаловать в телеграм бот Тохировлар`);
-            }
-            if (text === '/info') {
-                await bot.sendMessage(chatId,'8 март бугун Латофатнинг байрами!');
-            }
-            return bot.sendMessage(chatId, 'Я тебя не понимаю, попробуй еще раз!)');
-        } catch (e) {
-            return bot.sendMessage(chatId, 'Произошла какая то ошибочка!)');
-        }
-
-    })
 }
-
 start()
